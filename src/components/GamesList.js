@@ -14,6 +14,7 @@ export default function GamesList() {
             key={game.id}
             title={game.title}
             thumbnail={game.thumbnail}
+            id={game.id}
           />
         ))}
     </div>

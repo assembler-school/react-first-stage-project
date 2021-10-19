@@ -3,6 +3,7 @@ import axios from "axios";
 import Home from "./pages/Home";
 import { useEffect, useReducer } from "react";
 import { HomeContext } from "./context/HomeContext";
+import GameDetails from './pages/GameDetails';
 
 const initialState = {
   games: [],
@@ -40,8 +41,8 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/test">
-          <h1>test</h1>
+        <Route exact path="/game/:gameId">
+          <GameDetails />
         </Route>
         <Route path="/">
           <HomeContext.Provider value={{ state }}>
