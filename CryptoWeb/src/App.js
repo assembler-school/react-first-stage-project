@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { CryptoWebContext } from "./context/CryptoWeb/reducer";
+// import { CryptoWebContext } from "./context/CryptoWeb/reducer";
 import Auth from "./pages/Auth";
 
 function App() {
-  const state = useContext(CryptoWebContext);
+  // const state = useContext(CryptoWebContext);
 
   return (
     <Router>
@@ -13,7 +13,6 @@ function App() {
         <Route path="/home">{/* <Home /> */}</Route>
         <Route path="/">
           <Auth />
-          {/* <Header/> */}
         </Route>
       </Switch>
     </Router>

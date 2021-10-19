@@ -1,17 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import App from './App';
-import { CryptoWebProvider } from './context/CryptoWeb/reducer';
-import reportWebVitals from './reportWebVitals';
+import App from "./App";
+import { CryptoWebProvider } from "./context/CryptoWeb/reducer";
+import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
     <CryptoWebProvider>
-    <App />
+      <App />
     </CryptoWebProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 reportWebVitals();
