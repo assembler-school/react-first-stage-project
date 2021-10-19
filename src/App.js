@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import Home from "./pages/Home";
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { HomeContext } from "./context/HomeContext";
 
 const initialState = {
