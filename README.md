@@ -16,7 +16,7 @@ First, you will need to `clone` or `fork` the repository into your Github
 account:
 
 ```
-$ git clone https://github.com/assembler-school/react-shopping-cart-context.git
+$ git clone https://github.com/assembler-school/react-first-stage-project.git
 ```
 
 ## Project requirements
