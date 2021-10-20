@@ -1,8 +1,11 @@
+import React from "react";
+
+import CryptoBoard from "../../components/Organisms/CryptoBoard/CryptoBoard";
 import withLayout from "../../HOC/withLayout";
 
 function Home() {
   return (
-<div>HOLA</div>
+  <CryptoBoard/>
   );
 }
 export default (withLayout(Home));

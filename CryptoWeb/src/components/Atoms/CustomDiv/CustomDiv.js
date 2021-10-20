@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const LogInDiv = styled.div`
-  margin: auto;
+const CustomDiv = styled.div`
+  margin: 10rem auto;
   padding: 0.5rem;
   height: auto;
   width: 37.5rem;
@@ -10,4 +10,4 @@ const LogInDiv = styled.div`
   border: 1.5px solid #971010;
 `;
 
-export default LogInDiv;
+export default CustomDiv;

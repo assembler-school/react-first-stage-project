@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { CryptoWebContext } from "../../../context/CryptoWeb/reducer";
 
 export default function LogIn() {
+  const { logIn } = useContext(CryptoWebContext);
   return (
     <Formik
       initialValues={{ username: "", password: "" }}
@@ -17,6 +19,7 @@ export default function LogIn() {
       }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
+          logIn(values);
           setSubmitting(false);
         }, 400);
       }}
@@ -28,7 +31,7 @@ export default function LogIn() {
           <Field type="password" name="password" placeholder="password" />
           <ErrorMessage name="password" component="div" />
           <button type="submit" disabled={isSubmitting}>
-            Submit
+            Log in!
           </button>
         </Form>
       )}
