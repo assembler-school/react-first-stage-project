@@ -13,8 +13,8 @@ function App() {
         <Route path="/transactions">{/* <Transactions /> */}</Route>
         <Route path="/home">{<Home />}</Route>
         <Route path="/">
-          {/* <Auth /> */}
-          <Home/>
+          <Auth />
+          {/* <Home/> */}
         </Route>
       </Switch>
     </Router>
