@@ -19,6 +19,7 @@ header {
 .header__nav__item {
   i {
     font-size: 20px;
+    cursor: pointer;
   }
 }
 
@@ -32,6 +33,7 @@ header {
   &__item{
     i{
     font-size: 20px;
+    cursor: pointer;
     }
   }
 }
@@ -50,6 +52,11 @@ header {
   width: auto;
   gap: 20px;
   align-items: center;
+
+  div{
+    color: salmon;
+    font-weight: bold;
+  }
 }
 
 //     &__text {
