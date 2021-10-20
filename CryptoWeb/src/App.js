@@ -16,6 +16,7 @@ function App() {
         </Route>
         <Route path="/">
           <Auth />
+          {/* <Home/> */}
         </Route>
       </Switch>
     </Router>

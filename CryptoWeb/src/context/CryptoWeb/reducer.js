@@ -31,7 +31,6 @@ function reducer(state, action) {
     }
     case actionTypes.USER_SIGNUP: {
       let values = { ...action.payload, cryptos: [], USD: 100, balance: 100 };
-      console.log(values);
       signUpUser(values);
       return {
         ...state,

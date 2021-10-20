@@ -16,12 +16,24 @@ header {
   align-items: center;
 }
 
+.header__nav__item {
+  i {
+    font-size: 20px;
+  }
+}
+
 .header__media {
   display: flex;
   gap: 20%;
   width: auto;
-  gap: 20px;
+  gap: 30px;
   align-items: center;
+
+  &__item{
+    i{
+    font-size: 20px;
+    }
+  }
 }
 
 .header__title {
