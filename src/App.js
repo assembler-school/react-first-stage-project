@@ -1,32 +1,13 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import Home from "./pages/Home";
-import { createContext, useEffect, useReducer } from "react";
-import { HomeContext } from "./context/HomeContext";
+import { useEffect } from "react";
 import GameDetails from "./pages/GameDetails";
 import NewGame from "./pages/NewGame";
-
-const initialState = {
-  games: [],
-  gameDetails: {},
-  loadedGame: false,
-};
-
-function reducer(state, action) {
-  switch (action.type) {
-    case "LOAD":
-      return { ...state, games: [...action.payload] };
-    case "LOAD_GAME":
-      return { ...state, gameDetails: action.payload, loadedGame: true };
-    default:
-      return state;
-  }
-}
-
-export const testContext = createContext();
+import { useGames } from "./context/GamesContext";
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const { loadAllGames, games } = useGames();
 
   useEffect(() => {
     const localStorageItem = JSON.parse(localStorage.getItem("games"));
@@ -43,40 +24,35 @@ function App() {
       };
 
       axios.request(options).then(function (response) {
-        console.log(response.data);
-        dispatch({ type: "LOAD", payload: response.data });
+        loadAllGames(response.data);
       });
     } else {
-      dispatch({ type: "LOAD", payload: localStorageItem });
+      loadAllGames(localStorageItem);
     }
   }, []);
 
   useEffect(() => {
-    if (state.games.length > 0) {
-      localStorage.setItem("games", JSON.stringify(state.games));
+    if (games.length > 0) {
+      localStorage.setItem("games", JSON.stringify(games));
     }
-  }, [state.games]);
+  }, [games]);
 
   return (
-    <testContext.Provider value={{ state: state, dispatch: dispatch }}>
-      <Router>
-        <Switch>
-          <Route exact path="/game/:gameId">
-            <GameDetails />
-          </Route>
+    <Router>
+      <Switch>
+        <Route exact path="/game/:gameId">
+          <GameDetails />
+        </Route>
 
-          <Route exact path="/new-game">
-            <NewGame />
-          </Route>
+        <Route exact path="/new-game">
+          <NewGame />
+        </Route>
 
-          <Route path="/">
-            <HomeContext.Provider value={{ state: state, dispatch: dispatch }}>
-              <Home />
-            </HomeContext.Provider>
-          </Route>
-        </Switch>
-      </Router>
-    </testContext.Provider>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
