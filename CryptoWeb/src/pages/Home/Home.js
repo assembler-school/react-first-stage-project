@@ -1,4 +1,10 @@
+import React from "react";
+
+import CryptoBoard from "../../components/Organisms/CryptoBoard/CryptoBoard";
 import withLayout from "../../HOC/withLayout";
 
-<div className=""> hola</div>
-export default (withLayout(Home));
+function Home() {
+  return <CryptoBoard />;
+}
+
+export default withLayout(Home);

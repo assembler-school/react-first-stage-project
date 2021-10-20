@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import { CryptoWebContext } from "./context/CryptoWeb/reducer";
 import Auth from "./pages/Auth";
+import Home from "./pages/Home/Home";
 
 function App() {
   // const state = useContext(CryptoWebContext);
@@ -10,7 +11,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/transactions">{/* <Transactions /> */}</Route>
-        <Route path="/home">{/* <Home /> */}</Route>
+        <Route path="/home">{<Home />}</Route>
         <Route path="/">
           <Auth />
         </Route>

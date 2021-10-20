@@ -1,4 +1,4 @@
-const local = JSON.parse(localStorage.getItem("Users"));
+let local = JSON.parse(localStorage.getItem("Users"));
 
 function updateCurrentUser(array, values) {
   const updatedUsers = array.map((user) => {
@@ -11,6 +11,7 @@ function updateCurrentUser(array, values) {
 
 function signUpUser(values) {
   if (local === null) {
+    values = { ...values, isCurrentUser: true };
     const newList = [values];
     localStorage.Users = JSON.stringify(newList, null, 2);
   } else {

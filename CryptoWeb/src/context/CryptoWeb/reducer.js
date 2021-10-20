@@ -10,12 +10,12 @@ const actionTypes = {
 const CryptoWebContext = createContext();
 
 const initialState = {
-  users: [],
+  user: [],
   isAuth: false,
 };
 
 function reducer(state, action) {
-  const { users } = initialState;
+  const { user } = state;
   switch (action.type) {
     case actionTypes.USER_LOGIN: {
       logInUser(action.payload);
@@ -25,15 +25,17 @@ function reducer(state, action) {
       );
       return {
         ...state,
-        users: [...users, currentUser],
+        user: [currentUser],
         isAuth: true,
       };
     }
     case actionTypes.USER_SIGNUP: {
-      signUpUser(action.payload);
+      let values = { ...action.payload, cryptos: [], USD: 100, balance: 100 };
+      console.log(values);
+      signUpUser(values);
       return {
         ...state,
-        users: [...users, action.payload],
+        user: { ...action.payload, cryptos: [], USD: 100, balance: 100 },
         isAuth: true,
       };
     }
