@@ -1,4 +1,8 @@
 import withLayout from "../../HOC/withLayout";
 
-<div className=""> hola</div>
+function Home() {
+  return (
+<div>HOLA</div>
+  );
+}
 export default (withLayout(Home));
