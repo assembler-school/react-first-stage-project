@@ -371,6 +371,8 @@ export default function NewGame() {
               errorMessage={errors.freetogame_profile_url}
             />
 
+            <h4>Minimum system requirements</h4>
+
             {/*
           
 
@@ -381,7 +383,6 @@ export default function NewGame() {
             memory: "",
             graphics: "",
             storage: "",
-                      screenshots: [], // id and image
 
           }, */}
           </form>
