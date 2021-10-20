@@ -1,23 +1,29 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import Home from "./pages/Home";
-import { useEffect, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { HomeContext } from "./context/HomeContext";
 import GameDetails from "./pages/GameDetails";
 import NewGame from "./pages/NewGame";
 
 const initialState = {
   games: [],
+  gameDetails: {},
+  loadedGame: false,
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case "LOAD":
-      return { games: [...action.payload] };
+      return { ...state, games: [...action.payload] };
+    case "LOAD_GAME":
+      return { ...state, gameDetails: action.payload, loadedGame: true };
     default:
       return state;
   }
 }
+
+export const testContext = createContext();
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -52,23 +58,25 @@ function App() {
   }, [state.games]);
 
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/game/:gameId">
-          <GameDetails />
-        </Route>
+    <testContext.Provider value={{ state: state, dispatch: dispatch }}>
+      <Router>
+        <Switch>
+          <Route exact path="/game/:gameId">
+            <GameDetails />
+          </Route>
 
-        <Route exact path="/new-game">
-          <NewGame />
-        </Route>
+          <Route exact path="/new-game">
+            <NewGame />
+          </Route>
 
-        <Route path="/">
-          <HomeContext.Provider value={{ state }}>
-            <Home />
-          </HomeContext.Provider>
-        </Route>
-      </Switch>
-    </Router>
+          <Route path="/">
+            <HomeContext.Provider value={{ state: state, dispatch: dispatch }}>
+              <Home />
+            </HomeContext.Provider>
+          </Route>
+        </Switch>
+      </Router>
+    </testContext.Provider>
   );
 }
 

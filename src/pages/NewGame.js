@@ -373,18 +373,65 @@ export default function NewGame() {
 
             <h4>Minimum system requirements</h4>
 
-            {/*
-          
+            <input
+              type="text"
+              label="Operating system"
+              id="os"
+              value={values.minimum_system_requirements.os}
+              placeholder="Operating system"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              hasErrorMessage={values.minimum_system_requirements.os}
+              errorMessage={values.minimum_system_requirements.os}
+            />
 
+            <input
+              type="text"
+              label="Processor"
+              id="processor"
+              value={values.minimum_system_requirements.processor}
+              placeholder="Processor"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              hasErrorMessage={values.minimum_system_requirements.processor}
+              errorMessage={values.minimum_system_requirements.processor}
+            />
 
-          minimum_system_requirements: {
-            os: "",
-            processor: "",
-            memory: "",
-            graphics: "",
-            storage: "",
+            <input
+              type="text"
+              label="Memory"
+              id="memory"
+              value={values.minimum_system_requirements.memory}
+              placeholder="Memory"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              hasErrorMessage={values.minimum_system_requirements.memory}
+              errorMessage={values.minimum_system_requirements.memory}
+            />
 
-          }, */}
+            <input
+              type="text"
+              label="Graphics"
+              id="graphics"
+              value={values.minimum_system_requirements.graphics}
+              placeholder="Graphics"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              hasErrorMessage={values.minimum_system_requirements.graphics}
+              errorMessage={values.minimum_system_requirements.graphics}
+            />
+
+            <input
+              type="text"
+              label="Storage"
+              id="storage"
+              value={values.minimum_system_requirements.storage}
+              placeholder="Storage"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              hasErrorMessage={values.minimum_system_requirements.storage}
+              errorMessage={values.minimum_system_requirements.storage}
+            />
           </form>
         )}
       </Formik>

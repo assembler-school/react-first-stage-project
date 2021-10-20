@@ -1,27 +1,17 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useContext, useEffect } from "react";
 import Layout from "../components/Layout";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-
-const initialState = {
-  currentGame: {},
-  loadedGame: false,
-};
-
-function reducer(state, action) {
-  switch (action.type) {
-    case "LOAD_GAME":
-      return { currentGame: action.payload, loadedGame: true };
-    default:
-      return state;
-  }
-}
+import { HomeContext } from "../context/HomeContext";
+import { testContext } from "../App";
 
 export default function GameDetails() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  // const [state, dispatch] = useReducer(reducer, initialState);
+  const { gameDetails } = useContext(HomeContext);
+  const { state, dispatch } = useContext(testContext);
 
   const { gameId } = useParams();
-  console.log(gameId);
+  console.log(state);
 
   useEffect(() => {
     var options = {
@@ -35,7 +25,7 @@ export default function GameDetails() {
     };
 
     axios.request(options).then(function (response) {
-      console.log(response.data);
+      // console.log(response.data);
       dispatch({ type: "LOAD_GAME", payload: response.data });
     });
   }, [gameId]);
@@ -52,12 +42,11 @@ export default function GameDetails() {
     game_url,
     release_date,
     minimum_system_requirements,
-  } = state.currentGame;
-  console.log(minimum_system_requirements);
+  } = state.gameDetails;
   return (
     <div>
       <Layout>
-        {state.currentGame === undefined && <div>ERROR</div>}
+        {state.gameDetails === undefined && <div>ERROR</div>}
         {state.loadedGame && (
           <div className="container">
             <h2>{title}</h2>
