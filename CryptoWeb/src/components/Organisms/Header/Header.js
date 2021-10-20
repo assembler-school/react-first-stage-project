@@ -17,6 +17,7 @@ function Header() {
       </div>
       <div className="header__title">
         <h1>CryptoWeb</h1>
+        <i class="fas fa-coins"></i>
       </div>
       <div className="header__media">
         <div className="header__media__item">
