@@ -6,7 +6,6 @@ export default function CryptoInfo(props) {
   const { id } = props;
   const { cryptos } = user;
   const example = cryptos.find((crypto) => crypto.id === id);
-  console.log(example);
   return (
     <div>
       <p>{example.name}</p>

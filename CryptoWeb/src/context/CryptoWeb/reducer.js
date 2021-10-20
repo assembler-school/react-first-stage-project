@@ -1,6 +1,7 @@
 import React, { createContext, useReducer } from "react";
 
 import { signUpUser, logInUser } from "../../utils/authentification";
+import getCryptoPrices from "../../utils/getCryptoPrices";
 
 const actionTypes = {
   USER_LOGIN: "USER_LOGIN",
@@ -47,9 +48,18 @@ function reducer(state, action) {
             },
           },
         ],
-        USD: 100,
-        balance: 100,
+        USD: 1000,
+        // CryptoPrices: cryptos
+        //   .map((crypto) => getCryptoPrices(crypto.id, crypto.amount))
+        //   .reduce((a, b) => a + b),
+        // balance: USD + CryptoValue,
       };
+      console.log(
+        values.cryptos.map((crypto) => {
+          const { quote } = getCryptoPrices(crypto.id, crypto.amount);
+          return quote.USD.price;
+        })
+      );
       signUpUser(values);
       return {
         ...state,

@@ -4,7 +4,6 @@ import CryptoInfo from "../../Atoms/CryptoInfo/CryptoInfo";
 
 export default function CryptoTable() {
   const { user } = useContext(CryptoWebContext);
-  console.log(user.cryptos);
 
   return (
     <>
