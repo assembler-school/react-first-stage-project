@@ -30,11 +30,30 @@ function reducer(state, action) {
       };
     }
     case actionTypes.USER_SIGNUP: {
-      let values = { ...action.payload, cryptos: [], USD: 100, balance: 100 };
+      let values = {
+        ...action.payload,
+        cryptos: [
+          {
+            id: 5,
+            symbol: "PPC",
+            name: "Peercoin",
+            amount: 2,
+            last_updated: "2021-10-20T10:56:02.000Z",
+            quote: {
+              USD: {
+                price: 1.78104260772318,
+                last_updated: "2021-10-20T10:56:02.000Z",
+              },
+            },
+          },
+        ],
+        USD: 100,
+        balance: 100,
+      };
       signUpUser(values);
       return {
         ...state,
-        user: { ...action.payload, cryptos: [], USD: 100, balance: 100 },
+        user: values,
         isAuth: true,
       };
     }
