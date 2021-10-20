@@ -10,7 +10,7 @@ const actionTypes = {
 const CryptoWebContext = createContext();
 
 const initialState = {
-  user: [],
+  user: {},
   isAuth: false,
 };
 
@@ -25,7 +25,7 @@ function reducer(state, action) {
       );
       return {
         ...state,
-        user: [currentUser],
+        user: currentUser,
         isAuth: true,
       };
     }
