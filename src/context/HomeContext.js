@@ -1,7 +1,8 @@
 import { createContext } from "react";
 
 const initialValues = {
-  state: {},
+  games: [],
+  gameDetails: {},
 };
 
 export const HomeContext = createContext(initialValues);

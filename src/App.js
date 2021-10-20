@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import { useEffect, useReducer } from "react";
 import { HomeContext } from "./context/HomeContext";
 import GameDetails from "./pages/GameDetails";
+import NewGame from "./pages/NewGame";
 
 const initialState = {
   games: [],
@@ -56,6 +57,11 @@ function App() {
         <Route exact path="/game/:gameId">
           <GameDetails />
         </Route>
+
+        <Route exact path="/new-game">
+          <NewGame />
+        </Route>
+
         <Route path="/">
           <HomeContext.Provider value={{ state }}>
             <Home />
