@@ -31,7 +31,7 @@ export default function LogIn() {
           <Field type="password" name="password" placeholder="password" />
           <ErrorMessage name="password" component="div" />
           <button type="submit" disabled={isSubmitting}>
-            Log in!
+            Log in
           </button>
         </Form>
       )}

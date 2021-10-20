@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CryptoWebContext } from "../../../context/CryptoWeb/reducer";
 import "./header.scss";
 
 function Header() {
+  const { user } = useContext(CryptoWebContext);
+
   return (
     <header>
       <div className="header__nav">
@@ -13,12 +16,12 @@ function Header() {
         <h1>CryptoWeb</h1>
       </div>
       <div className="header__media">
-        <div  className="header__media__item"> facebook</div>
-        <div  className="header__media__item"> instagram</div>
+        <div className="header__media__item"> facebook</div>
+        <div className="header__media__item"> instagram</div>
         <div className="header__media__item"> twitter</div>
       </div>
       <div className="header__userName">
-        <div>hola</div>
+        <div>{user.username}</div>
       </div>
     </header>
   );

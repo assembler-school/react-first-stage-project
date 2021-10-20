@@ -57,7 +57,7 @@ export default function SignUp() {
           />
           <ErrorMessage name="repeatPassword" component="div" />
           <button type="submit" disabled={isSubmitting}>
-            Sign up!
+            Sign up
           </button>
         </Form>
       )}
