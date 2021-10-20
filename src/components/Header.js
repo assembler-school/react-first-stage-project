@@ -7,7 +7,7 @@ export default function Header() {
       <header className="">
         <h1>Free Videogames</h1>
         <div className="d-flex flex-row gap-3">
-          <Link to="/">
+          <Link to="/home">
             <h4>Home</h4>
           </Link>
 

@@ -235,25 +235,25 @@ export default function NewGame() {
           <form onSubmit={handleSubmit}>
             <input
               type="text"
-              label="Game title"
-              id="title"
-              value={values.title}
-              placeholder="Game title"
+              label="Name"
+              id="name"
+              value={values.name}
+              placeholder="Game name"
               handleChange={handleChange}
               handleBlur={handleBlur}
-              hasErrorMessage={touched.title}
-              errorMessage={errors.title}
+              hasErrorMessage={touched.name}
+              errorMessage={errors.name}
             />
             <input
               type="text"
-              label="Thumbnail"
-              id="thumbnail"
-              value={values.thumbnail}
-              placeholder="Thumbnail"
+              label="Review"
+              id="review"
+              value={values.review}
+              placeholder="review"
               handleChange={handleChange}
               handleBlur={handleBlur}
-              hasErrorMessage={touched.thumbnail}
-              errorMessage={errors.thumbnail}
+              hasErrorMessage={touched.review}
+              errorMessage={errors.review}
             />
             <input
               type="text"
