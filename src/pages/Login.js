@@ -5,6 +5,7 @@ import ValidationSchema from "../components/ValidationSchema";
 import { AuthContext } from "../context/AuthContext";
 import { Redirect } from "react-router";
 import Footer from "../components/Footer";
+import { MDBInput } from "mdb-react-ui-kit";
 
 export default function Login() {
   const { users, isLogged, login, addUser } = useContext(AuthContext);
@@ -48,12 +49,12 @@ export default function Login() {
             <Form className="col col-12 ">
               <div className="row justify-content-center align-items-center gap-3">
                 <h1 className="text-center">Log In</h1>
-                <div className="row">
-                  <label className="col col-3" htmlFor="username">
+                <div className="row align-items-center">
+                  <label className="col col-3 fw-bold" htmlFor="username">
                     Username
                   </label>
                   <Field
-                    className="col col-9"
+                    className="col col-9 form-control w-50"
                     type="text"
                     label="Username"
                     id="username"
@@ -63,14 +64,16 @@ export default function Login() {
                 </div>
 
                 {errors.username && touched.username ? (
-                  <div>{errors.username}</div>
+                  <div className="text-center text-danger fw-bold">
+                    {errors.username}
+                  </div>
                 ) : null}
-                <div className="row">
-                  <label className="col col-3" htmlFor="password">
+                <div className="row align-items-center">
+                  <label className="col col-3 fw-bold" htmlFor="password">
                     Password
                   </label>
                   <Field
-                    className="col col-9"
+                    className="col col-9 form-control w-50"
                     type="password"
                     label="Password"
                     id="password"
@@ -79,11 +82,15 @@ export default function Login() {
                   />
                 </div>
                 {errors.password && touched.password ? (
-                  <div>{errors.password}</div>
+                  <div className="text-center text-danger fw-bold">
+                    {errors.password}
+                  </div>
                 ) : null}
-                <button className="btn btn-primary w-50" type="submit">
-                  Log In
-                </button>
+                <div className="w-50">
+                  <button className="btn btn-primary w-100 " type="submit">
+                    Log In
+                  </button>
+                </div>
               </div>
             </Form>
           )}
@@ -107,13 +114,12 @@ export default function Login() {
             <Form className="col col-12 pt-5 p-lg-0 ">
               <div className="row justify-content-center align-items-center gap-3">
                 <h1 className="text-center">Register</h1>
-                <div className="row">
-                  <label className="col col-3" htmlFor="username">
+                <div className="row align-items-center">
+                  <label className="col col-3 fw-bold" htmlFor="username">
                     Username
                   </label>
-
                   <Field
-                    className="col col-9"
+                    className="col col-9 form-control w-50"
                     type="text"
                     label="Username"
                     id="username"
@@ -122,14 +128,16 @@ export default function Login() {
                   />
                 </div>
                 {errors.username && touched.username ? (
-                  <div>{errors.username}</div>
+                  <div className="text-center text-danger fw-bold">
+                    {errors.username}
+                  </div>
                 ) : null}
-                <div className="row">
-                  <label className="col col-3" htmlFor="password">
+                <div className="row align-items-center">
+                  <label className="col col-3  fw-bold" htmlFor="password">
                     Password
                   </label>
                   <Field
-                    className="col col-9"
+                    className="col col-9 form-control w-50"
                     type="password"
                     label="Password"
                     id="password"
@@ -138,11 +146,15 @@ export default function Login() {
                   />
                 </div>
                 {errors.password && touched.password ? (
-                  <div>{errors.password}</div>
+                  <div className="text-center text-danger fw-bold">
+                    {errors.password}
+                  </div>
                 ) : null}
-                <button className="btn btn-primary w-50" type="submit">
-                  Register
-                </button>
+                <div className="w-50">
+                  <button className="btn btn-primary w-100 " type="submit">
+                    Log In
+                  </button>
+                </div>
               </div>
             </Form>
           )}
