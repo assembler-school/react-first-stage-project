@@ -9,7 +9,7 @@ export default function GameDetails() {
   const { gameDetails, loadedGame, loadGame, startFetch, endFetch, fetching } =
     useGames();
 
-    const {isLogged} = useContext(AuthContext);
+  const { isLogged } = useContext(AuthContext);
 
   const { gameId } = useParams();
 
@@ -27,8 +27,6 @@ export default function GameDetails() {
     axios.request(options).then(function (response) {
       loadGame(response.data);
       endFetch();
-
-      console.log(gameDetails);
     });
   }, [gameId]);
 
