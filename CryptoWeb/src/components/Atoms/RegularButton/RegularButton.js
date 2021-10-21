@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const RegularButton = styled.button`
   height: 3rem;
-  width: 81%;
   padding: 1rem;
   border: 1.5px solid white;
   border-radius: 0.5rem;

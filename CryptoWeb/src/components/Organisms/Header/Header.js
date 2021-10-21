@@ -12,28 +12,28 @@ function Header() {
           <i class="fas fa-bars"></i> Menu
         </div>
         <div className="header__nav__item">
-          <i class="fas fa-search"></i> Search
+          <i className="fas fa-search"></i> Search
         </div>
       </div>
       <div className="header__title">
         <h1>CryptoWeb</h1>
-        <i class="fas fa-coins"></i>
+        <i className="fas fa-coins"></i>
       </div>
       <div className="header__media">
         <div className="header__media__item">
-          <i class="fab fa-facebook-square"></i>
+          <i className="fab fa-facebook-square"></i>
         </div>
         <div className="header__media__item">
-          <i class="fab fa-instagram"></i>
+          <i className="fab fa-instagram"></i>
         </div>
         <div className="header__media__item">
-          <i class="fab fa-twitter-square"></i>
+          <i className="fab fa-twitter-square"></i>
         </div>
       </div>
       <div className="header__userName">
         <div>{user.username}</div>
         <div className="header__nav__item">
-          <i class="fas fa-sign-out-alt"></i>
+          <i className="fas fa-sign-out-alt"></i>
         </div>
       </div>
     </header>

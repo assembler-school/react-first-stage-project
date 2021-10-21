@@ -1,0 +1,16 @@
+.table__info{
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 0.5px solid #bebebe;
+
+  p{
+    width: 20%;
+  }
+}
+
+
+.table__button{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  }

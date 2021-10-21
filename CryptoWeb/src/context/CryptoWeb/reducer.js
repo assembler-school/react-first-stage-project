@@ -54,12 +54,12 @@ function reducer(state, action) {
         //   .reduce((a, b) => a + b),
         // balance: USD + CryptoValue,
       };
-      console.log(
-        values.cryptos.map((crypto) => {
-          const { quote } = getCryptoPrices(crypto.id, crypto.amount);
-          return quote.USD.price;
-        })
-      );
+      // console.log(
+      //   values.cryptos.map((crypto) => {
+      //     const { quote } = getCryptoPrices(crypto.id, crypto.amount);
+      //     return quote.USD.price;
+      //   })
+      // );
       signUpUser(values);
       return {
         ...state,
