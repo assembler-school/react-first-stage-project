@@ -4,12 +4,13 @@ import NavBar from "./NavBar";
 
 export default function Header() {
   const { isLogged } = useContext(AuthContext);
+
   return (
     <>
-      <header className="">
+      <header className="text-light">
         <h1 className="text-center">Free Videogames</h1>
         {isLogged && (
-          <div className="d-flex flex-row justify-content-between">
+          <div className="d-flex flex-row justify-content-between py-4">
             <NavBar />
           </div>
         )}

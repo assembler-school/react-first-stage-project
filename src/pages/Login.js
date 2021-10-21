@@ -55,7 +55,6 @@ export default function Login() {
                       className="col col-9 form-control w-50"
                       type="text"
                       label="Username"
-                      id="username"
                       value={values.username}
                       placeholder="Game username"
                     />
@@ -74,7 +73,6 @@ export default function Login() {
                       className="col col-9 form-control w-50"
                       type="password"
                       label="Password"
-                      id="password"
                       value={values.password}
                       placeholder="Game password"
                     />
@@ -103,6 +101,7 @@ export default function Login() {
             }}
             validationSchema={ValidationSchema}
             onSubmit={(values) => {
+              console.log(values);
               values.id = uuid();
               addUser([...users, values]);
             }}
@@ -119,7 +118,6 @@ export default function Login() {
                       className="col col-9 form-control w-50"
                       type="text"
                       label="Username"
-                      id="username"
                       value={values.username}
                       placeholder="Game username"
                     />
@@ -137,7 +135,6 @@ export default function Login() {
                       className="col col-9 form-control w-50"
                       type="password"
                       label="Password"
-                      id="password"
                       value={values.password}
                       placeholder="Game password"
                     />
@@ -149,7 +146,7 @@ export default function Login() {
                   ) : null}
                   <div className="w-50">
                     <button className="btn btn-primary w-100 " type="submit">
-                      Log In
+                      Register
                     </button>
                   </div>
                 </div>

@@ -6,7 +6,7 @@ export default function GamesList() {
   const { games } = useGames();
 
   return (
-    <div className=" row bg-success">
+    <div className="row gx-5 bg-dark">
       {games.length > 0 &&
         games.map((game) => (
           <GameCard
