@@ -1,11 +1,13 @@
 import React, { createContext, useReducer } from "react";
 
-import { signUpUser, logInUser } from "../../utils/authentification";
+import { signUpUser, logInUser } from "../../utils/authentication";
+import logOut from "../../utils/logOut";
 // import getCryptoPrices from "../../utils/getCryptoPrices";
 
 const actionTypes = {
   USER_LOGIN: "USER_LOGIN",
   USER_SIGNUP: "USER_SIGNUP",
+  USER_LOGOUT: "USER_LOGOUT",
   CRYPTO_FETCHING: "CRYPTO_FETCHING",
   CRYPTO_SUCCESS: "CRYPTO_SUCCESS",
   CRYPTO_ERROR: "CRYPTO_ERROR",
@@ -69,22 +71,20 @@ function reducer(state, action) {
           },
         ],
         USD: 100000,
-        // CryptoPrices: cryptos
-        //   .map((crypto) => getCryptoPrices(crypto.id, crypto.amount))
-        //   .reduce((a, b) => a + b),
-        // balance: USD + CryptoValue,
       };
-      // console.log(
-      //   values.cryptos.map((crypto) => {
-      //     const { quote } = getCryptoPrices(crypto.id, crypto.amount);
-      //     return quote.USD.price;
-      //   })
-      // );
+
       signUpUser(values);
       return {
         ...state,
         user: values,
         isAuth: true,
+      };
+    }
+    case actionTypes.USER_LOGOUT: {
+      logOut();
+      return {
+        ...state,
+        isAuth: false,
       };
     }
     case actionTypes.CRYPTO_FETCHING: {
@@ -123,6 +123,7 @@ function CryptoWebProvider({ children }) {
       dispatch({ type: actionTypes.USER_LOGIN, payload: userData }),
     signUp: (userData) =>
       dispatch({ type: actionTypes.USER_SIGNUP, payload: userData }),
+    logOut: () => dispatch({ type: actionTypes.USER_LOGOUT }),
     cryptoFetching: () => dispatch({ type: actionTypes.CRYPTO_FETCHING }),
     cryptoError: (err) =>
       dispatch({ type: actionTypes.CRYPTO_ERROR, payload: err }),
