@@ -55,6 +55,7 @@ export default function Login() {
                       className="col col-9 form-control w-50"
                       type="text"
                       label="Username"
+                      name="username"
                       value={values.username}
                       placeholder="Game username"
                     />
@@ -73,6 +74,7 @@ export default function Login() {
                       className="col col-9 form-control w-50"
                       type="password"
                       label="Password"
+                      name="password"
                       value={values.password}
                       placeholder="Game password"
                     />
@@ -118,6 +120,7 @@ export default function Login() {
                       className="col col-9 form-control w-50"
                       type="text"
                       label="Username"
+                      name="username"
                       value={values.username}
                       placeholder="Game username"
                     />
@@ -135,6 +138,7 @@ export default function Login() {
                       className="col col-9 form-control w-50"
                       type="password"
                       label="Password"
+                      name="password"
                       value={values.password}
                       placeholder="Game password"
                     />
