@@ -26,7 +26,6 @@ function reducer(state, action) {
   switch (action.type) {
     case actionTypes.USER_LOGIN: {
       const rightPassword = logInUser(action.payload);
-      console.log(rightPassword);
       const local = JSON.parse(localStorage.getItem("Users"));
       const currentUser = local.find(
         (e) => e.username === action.payload.username
@@ -106,7 +105,7 @@ function reducer(state, action) {
         ...state,
         isLoading: false,
         hasError: false,
-        cryptoList: [action.payload],
+        cryptoList: action.payload,
       };
     }
     default: {

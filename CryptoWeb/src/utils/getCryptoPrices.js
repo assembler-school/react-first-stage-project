@@ -1,14 +1,22 @@
 import axios from "axios";
 
-const BASE_URL = "https://pro-api.coinmarketcap.com/v1/tools/price-conversion?";
-const HEADER = "5da150cd-3557-4a3d-9b07-7bf7b57e96dd";
+const KEY = process.env.REACT_APP_COINMARKET_KEY;
 
 export default async function getCryptoPrices(id, amount) {
   try {
-    const res = await axios.get(`${BASE_URL}id=${id}&amount=${amount}`, {
-      headers: HEADER,
-    });
-    console.log(res.data);
+    const res = await axios.get(
+      `/tools/price-conversion?id=${id}&amount=${amount}`,
+      {
+        headers: {
+          "X-CMC_PRO_API_KEY": KEY,
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+          "Access-Control-Allow-Headers":
+            "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization",
+        },
+      }
+    );
+    return res;
   } catch (err) {
     console.log(err);
   }

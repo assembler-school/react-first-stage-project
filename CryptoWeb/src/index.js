@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import dotenv from "dotenv";
 
 import App from "./App";
 import { CryptoWebProvider } from "./context/CryptoWeb/reducer";

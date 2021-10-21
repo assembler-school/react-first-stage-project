@@ -19,8 +19,7 @@ function Transactions() {
   useEffect(async () => {
     cryptoFetching();
     const res = await getCryptoList();
-    console.log(res);
-    // res.status.code_error === 0 ? cryptoSuccess(res.data) : cryptoError(res);
+    res.status === 200 ? cryptoSuccess(res.data.data) : cryptoError(res);
   }, []);
   return (
     <CustomDiv>
@@ -38,10 +37,13 @@ function Transactions() {
       )}
       {!isLoading &&
         !hasError &&
-        // cryptoList.map((crypto) => (
-        //   <CryptoInfo key={crypto.id} id={crypto.id} />
-        // ))}
-        console.log("hola")}
+        cryptoList.map((crypto) => (
+          <div key={crypto.id} id={crypto.id} className="table__info">
+            <p>{crypto.name}</p>
+            <p>{crypto.symbol}</p>
+            <p>{parseFloat(crypto.quote.USD.price).toFixed(5)}</p>
+          </div>
+        ))}
     </CustomDiv>
   );
 }
