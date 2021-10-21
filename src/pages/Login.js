@@ -1,13 +1,8 @@
 import React from 'react'
+import { Formik, Form, Field } from 'formik';
+import { v4 as uuid } from 'uuid';
+import ValidationSchema from '../components/ValidationSchema';
 
-export default function Login() {
-    return (
-        <div>
-            <p>hola</p>
-        </div>
-    )
-}
-/*
 export default function NewGame() {
   return (
     <>
@@ -17,12 +12,9 @@ export default function NewGame() {
           username: "",
           password: "",
         }}
-        validationSchema={productSchema}
-        onSubmit={(values, { setSubmitting }) => {
-          const newProduct = addProductDetails(values);
-          saveNewProduct(newProduct);
-          setSubmitting(true);
-          setSubmittedFunction();
+        validationSchema={ValidationSchema}
+        onSubmit={(values) => {
+          console.log(values);
         }}
       >
         {({
@@ -36,33 +28,32 @@ export default function NewGame() {
           isValid,
           isSubmitting,
         }) => (
-          <form onSubmit={handleSubmit}>
-            <input
+          <Form>
+            <label htmlFor="username">Username</label>
+            <Field
               type="text"
               label="Username"
               id="username"
               value={values.username}
               placeholder="Game username"
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-              hasErrorMessage={touched.username}
-              errorMessage={errors.username}
             />
-            <input
-              type="text"
+            {errors.username && touched.username ? (
+            <div>{errors.username}</div>) : null}
+
+            <label htmlFor="password">Password</label>
+            <Field
+              type="password"
               label="Password"
               id="password"
               value={values.password}
-              placeholder="password"
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-              hasErrorMessage={touched.password}
-              errorMessage={errors.password}
+              placeholder="Game password"
             />
-          </form>
+            {errors.password && touched.password ? (
+            <div>{errors.password}</div>) : null}
+            <button type="submit">Submit</button>
+          </Form>
         )}
       </Formik>
     </>
   );
 }
-*/
