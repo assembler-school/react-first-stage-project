@@ -3,7 +3,6 @@ import axios from "axios";
 import Home from "./pages/Home";
 import { useEffect } from "react";
 import GameDetails from "./pages/GameDetails";
-import NewGame from "./pages/NewGame";
 import { useGames } from "./context/GamesContext";
 import Login from "./pages/Login";
 

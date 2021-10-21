@@ -1,12 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import Layout from "../components/Layout";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import axios from "axios";
 import { useGames } from "../context/GamesContext";
+import { AuthContext } from "../context/AuthContext";
 
 export default function GameDetails() {
   const { gameDetails, loadedGame, loadGame, startFetch, endFetch, fetching } =
     useGames();
+
+    const {isLogged} = useContext(AuthContext);
 
   const { gameId } = useParams();
 
@@ -43,7 +46,8 @@ export default function GameDetails() {
     minimum_system_requirements,
   } = gameDetails;
   return (
-    <div>
+    <>
+      {!isLogged && <Redirect to="/" />}
       <Layout>
         {gameDetails === undefined && <div>ERROR</div>}
         {!fetching && loadedGame && (
@@ -78,6 +82,6 @@ export default function GameDetails() {
           </div>
         )}
       </Layout>
-    </div>
+    </>
   );
 }
