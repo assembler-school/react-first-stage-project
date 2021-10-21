@@ -2,8 +2,12 @@ let local = JSON.parse(localStorage.getItem("Users"));
 
 function updateCurrentUser(array, values) {
   const updatedUsers = array.map((user) => {
-    if (user.username === values.username) user.isCurrentUser = true;
-    if (user.username !== values.username) user.isCurrentUser = false;
+    if (values === null) {
+      user.isCurrentUser = false
+    } else if (user.username === values.username) {
+      user.isCurrentUser = true
+    } else if (user.username !== values.username) user.isCurrentUser = false;
+    
     return user;
   });
   return updatedUsers;
@@ -50,4 +54,4 @@ function logInUser(values) {
   }
 }
 
-export { signUpUser, logInUser };
+export { signUpUser, logInUser,  updateCurrentUser };

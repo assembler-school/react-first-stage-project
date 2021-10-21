@@ -2,8 +2,13 @@ import React, { useContext } from "react";
 import { CryptoWebContext } from "../../../context/CryptoWeb/reducer";
 import "./header.scss";
 
+
 function Header() {
-  const { user } = useContext(CryptoWebContext);
+  const { user, logOut } = useContext(CryptoWebContext);
+
+  function handleLogOut(){
+    logOut()
+  }
 
   return (
     <header>
@@ -33,7 +38,7 @@ function Header() {
       <div className="header__userName">
         <div>{user.username}</div>
         <div className="header__nav__item">
-          <i className="fas fa-sign-out-alt"></i>
+          <i onClick={handleLogOut} className="fas fa-sign-out-alt"></i>
         </div>
       </div>
     </header>
