@@ -5,12 +5,15 @@ export default function CryptoInfo(props) {
   const { user } = useContext(CryptoWebContext);
   const { id } = props;
   const { cryptos } = user;
-  const example = cryptos.find((crypto) => crypto.id === id);
+  const crypto = cryptos.find((crypto) => crypto.id === id);
   return (
     <div>
-      <p>{example.name}</p>
-      <p>{example.symbol}</p>
-      <p>{example.amount}</p>
+      <p>{crypto.name}</p>
+      <p>
+        <strong>{crypto.symbol}</strong>
+      </p>
+      <p>{crypto.amount}</p>
+      <p>{parseFloat(crypto.quote.USD.price).toFixed(5)}</p>
     </div>
   );
 }

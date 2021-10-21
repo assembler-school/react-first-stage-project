@@ -37,11 +37,17 @@ function logInUser(values) {
     const updatedUsers = updateCurrentUser(local, values);
 
     localStorage.Users = JSON.stringify(updatedUsers, null, 2);
+
+    return true;
   }
-  if (local && currentUser && currentUser.password !== values.password)
-    alert("Wrong password! Think again");
-  if (!local || !currentUser)
+  if (!local || !currentUser) {
     alert("You are not registered yet. Sign in and get started!");
+    return false;
+  }
+  if (local && currentUser && currentUser.password !== values.password) {
+    alert("Wrong password! Think again");
+    return false;
+  }
 }
 
 export { signUpUser, logInUser };

@@ -16,6 +16,7 @@ export default function CryptoTable() {
       {user.cryptos.map((crypto) => {
         return <CryptoInfo key={crypto.id} id={crypto.id} />;
       })}
+      {console.log(user.cryptos)}
     </>
   );
 }
