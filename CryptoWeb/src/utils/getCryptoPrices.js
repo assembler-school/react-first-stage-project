@@ -9,15 +9,11 @@ export default async function getCryptoPrices(id, amount) {
       {
         headers: {
           "X-CMC_PRO_API_KEY": KEY,
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-          "Access-Control-Allow-Headers":
-            "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization",
         },
       }
     );
     return res;
   } catch (err) {
-    console.log(err);
+    return err;
   }
 }

@@ -2,7 +2,6 @@ import React, { createContext, useReducer } from "react";
 
 import { signUpUser, logInUser } from "../../utils/authentication";
 import logOut from "../../utils/logOut";
-// import getCryptoPrices from "../../utils/getCryptoPrices";
 
 const actionTypes = {
   USER_LOGIN: "USER_LOGIN",
@@ -41,34 +40,7 @@ function reducer(state, action) {
     case actionTypes.USER_SIGNUP: {
       let values = {
         ...action.payload,
-        cryptos: [
-          {
-            id: 5,
-            symbol: "PPC",
-            name: "Peercoin",
-            amount: 2,
-            last_updated: "2021-10-20T10:56:02.000Z",
-            quote: {
-              USD: {
-                price: 1.78104260772318,
-                last_updated: "2021-10-20T10:56:02.000Z",
-              },
-            },
-          },
-          {
-            id: 1,
-            symbol: "BTC",
-            name: "Bitcoin",
-            amount: 1,
-            last_updated: "2021-10-21T08:19:02.000Z",
-            quote: {
-              USD: {
-                price: 65640.38434487107,
-                last_updated: "2021-10-21T08:19:02.000Z",
-              },
-            },
-          },
-        ],
+        cryptos: [],
         USD: 100000,
       };
 

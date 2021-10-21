@@ -6,7 +6,8 @@ import RegularButton from "../../Atoms/RegularButton/RegularButton";
 import "./CryptoTable.scss";
 
 export default function CryptoTable() {
-  const { user } = useContext(CryptoWebContext);
+  const local = JSON.parse(localStorage.getItem("Users"));
+  const currentUser = local.find((e) => e.isCurrentUser);
 
   return (
     <>
@@ -16,7 +17,7 @@ export default function CryptoTable() {
         <p>Quantity</p>
         <p>Price</p>
       </div>
-      {user.cryptos.map((crypto) => {
+      {currentUser.cryptos.map((crypto) => {
         return <CryptoInfo key={crypto.id} id={crypto.id} />;
       })}
       <div className="table__button">

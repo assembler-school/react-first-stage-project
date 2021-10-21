@@ -3,11 +3,12 @@ import { CryptoWebContext } from "../../../context/CryptoWeb/reducer";
 import CustomDiv from "../../Atoms/CustomDiv";
 
 export default function InfoBoard() {
-  const { user } = useContext(CryptoWebContext);
-  const totalCrypto = user.cryptos
+  const local = JSON.parse(localStorage.getItem("Users"));
+  const currentUser = local.find((e) => e.isCurrentUser);
+  const totalCrypto = currentUser.cryptos
     .map((crypto) => crypto.quote.USD.price)
     .reduce((a, b) => a + b);
-  const totalInvestment = user.USD + totalCrypto;
+  const totalInvestment = currentUser.USD + totalCrypto;
   return (
     <CustomDiv>
       <ul>
@@ -16,7 +17,7 @@ export default function InfoBoard() {
         </li>
         <li>
           <strong>USD:</strong>
-          {user.USD}
+          {currentUser.USD}
         </li>
         <li>
           <strong>Total Crypto:</strong>

@@ -10,14 +10,18 @@ import { CryptoWebContext } from "../../context/CryptoWeb/reducer";
 import withLayout from "../../HOC/withLayout";
 
 function Home() {
-  const { user, isAuth } = useContext(CryptoWebContext);
+  const { isAuth } = useContext(CryptoWebContext);
+  const local = JSON.parse(localStorage.getItem("Users"));
+  const currentUser = local.find((e) => e.isCurrentUser);
   return (
     <>
       {!isAuth && <Redirect to="/" />}
-      <h1>{user.username}, check your cryptowallet and take the next step</h1>
+      {!currentUser && <Redirect to="/" />}
+      <h1>
+        {currentUser.username}, check your cryptowallet and take the next step
+      </h1>
       <FlexDiv>
-        <CryptoBoard />
-        {/* <PhoneImg /> */}
+        <CryptoBoard currentUser={currentUser} />
         <InfoBoard />
       </FlexDiv>
     </>

@@ -3,9 +3,10 @@ import { CryptoWebContext } from "../../../context/CryptoWeb/reducer";
 import "../../Molecules/CryptoTable/CryptoTable.scss";
 
 export default function CryptoInfo(props) {
-  const { user } = useContext(CryptoWebContext);
+  const local = JSON.parse(localStorage.getItem("Users"));
+  const currentUser = local.find((e) => e.isCurrentUser);
   const { id } = props;
-  const { cryptos } = user;
+  const { cryptos } = currentUser;
   const crypto = cryptos.find((crypto) => crypto.id === id);
   return (
     <div className="table__info">
