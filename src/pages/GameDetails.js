@@ -97,7 +97,6 @@ export default function GameDetails() {
                       </li>
                       <li>Storage: {minimum_system_requirements.storage}</li>
                     </ul>
-                    )
                   </>
                 )}
                 <a className="text-decoration-none" href={game_url}>

@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import GameDetails from "./pages/GameDetails";
-import { useGames } from "./context/GamesContext";
 import Login from "./pages/Login";
 
 function App() {
