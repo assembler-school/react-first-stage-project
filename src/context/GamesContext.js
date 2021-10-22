@@ -5,6 +5,7 @@ const GamesContext = createContext();
 const initialState = {
   games: [],
   gameDetails: {},
+  loadedGames: false,
   loadedGame: false,
   fetching: false,
 };
@@ -12,7 +13,7 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case "LOAD_GAMES":
-      return { ...state, games: [...action.payload] };
+      return { ...state, games: [...action.payload], loadedGames: true };
     case "LOADED_GAME":
       return { ...state, gameDetails: action.payload, loadedGame: true };
     case "FETCHING_DATA":

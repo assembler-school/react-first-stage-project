@@ -15,3 +15,7 @@ header {
 .maxwidth {
   max-width: 1200px;
 }
+
+.game-card {
+  height: 20rem;
+}
