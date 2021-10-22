@@ -44,7 +44,7 @@ export default function GamesList() {
   };
 
   return (
-    <div className="row gx-5 bg-dark">
+    <div className="row gx-5 gy-4 bg-dark mt-3">
       {(games.length === undefined || games.length < 1) && (
         <>
           <GameCard />

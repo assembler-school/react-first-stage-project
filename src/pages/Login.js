@@ -19,7 +19,7 @@ export default function Login() {
   return (
     <>
       <Layout>
-        <div className="container-fluid row m-0 p-5 text-light ">
+        <div className="container-fluid row m-0 p-5 text-light">
           {isLogged && <Redirect to="/home" />}
           <div className="col col-12 col-lg-6 p-0">
             <Formik

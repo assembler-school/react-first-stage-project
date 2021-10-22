@@ -1,9 +1,18 @@
-:root {
+html {
   background-color: #212529;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 header {
   height: 20rem;
   color: rgb(163, 159, 221);
+}
+header img {
+  cursor: pointer;
+}
+.height100 {
+  min-height: 100vh;
 }
 .background-image {
   background-image: url("./assets/img/header-img.jpg");
@@ -14,10 +23,6 @@ header {
 
 .maxwidth {
   max-width: 1200px;
-}
-
-.game-card {
-  height: 20rem;
 }
 
 .game-details {

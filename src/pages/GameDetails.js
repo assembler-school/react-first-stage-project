@@ -62,12 +62,12 @@ export default function GameDetails() {
         <div className="text-light border rounded-3 bg-dark bg-gradient py-3 mt-3 game-details">
           {loadedGameDetails && <h2 className="pb-3">{title}</h2>}
           <div className="row">
-            <div className="col col-6">
+            <div className="col col-12 col-md-6">
               {loadedGameDetails && (
                 <img className="w-75" src={thumbnail} alt={title} />
               )}
             </div>
-            <div className="col col-6">
+            <div className="col col-12 col-md-6 ">
               {loadedGameDetails && (
                 <>
                   <p>Genre: {genre}</p>

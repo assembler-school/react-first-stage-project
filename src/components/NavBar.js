@@ -20,7 +20,6 @@ export default function NavBar() {
       )}
       <div className="w-100 text-end">
         <img
-          style={{ cursor: "pointer" }}
           onClick={logOut}
           className="img-responsive text-end"
           src={logoutIcon}
