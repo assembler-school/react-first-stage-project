@@ -36,7 +36,7 @@ function reducer(state, action) {
       };
 
     case "RESET_LOADED_GAME_DETAILS":
-      return { ...state, loadedGameDetails: false };
+      return { ...state, gameDetails: {}, loadedGameDetails: false };
 
     default:
       return state;

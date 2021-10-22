@@ -19,3 +19,7 @@ header {
 .game-card {
   height: 20rem;
 }
+
+.game-details {
+  min-height: 40rem;
+}

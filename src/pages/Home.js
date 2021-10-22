@@ -1,14 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Layout from "../components/Layout";
 import GamesList from "../components/GamesList";
 import { Redirect } from "react-router";
 import { AuthContext } from "../context/AuthContext";
+import { useGames } from "../context/GamesContext";
 
 export default function Home() {
-  const {isLogged} = useContext(AuthContext);
+  const { isLogged } = useContext(AuthContext);
+  const { resetLoadedGameDetails, gameDetails } = useGames();
+  console.log(gameDetails);
+  useEffect(() => {
+    resetLoadedGameDetails();
+  }, []);
+
   return (
     <>
-    {!isLogged && <Redirect to="/" />}
+      {!isLogged && <Redirect to="/" />}
       <Layout>
         <GamesList />
       </Layout>

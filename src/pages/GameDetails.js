@@ -12,7 +12,6 @@ export default function GameDetails() {
     fetchGameDetails,
     loadGameDetails,
     resetLoadedGameDetails,
-    fetchingGameDetails,
   } = useGames();
 
   const { isLogged } = useContext(AuthContext);
@@ -20,6 +19,7 @@ export default function GameDetails() {
   const { gameId } = useParams();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     resetLoadedGameDetails();
   }, []);
 
@@ -59,45 +59,54 @@ export default function GameDetails() {
     <>
       {!isLogged && <Redirect to="/" />}
       <Layout>
-        {gameDetails === undefined && <div>ERROR</div>}
-        {loadedGameDetails && !fetchingGameDetails && (
-          <div className="text-light border rounded-3 bg-dark bg-gradient py-3 mt-3">
-            <h2 className="pb-3">{title}</h2>
-            <div className="row">
-              <div className="col col-6">
+        <div className="text-light border rounded-3 bg-dark bg-gradient py-3 mt-3 game-details">
+          {loadedGameDetails && <h2 className="pb-3">{title}</h2>}
+          <div className="row">
+            <div className="col col-6">
+              {loadedGameDetails && (
                 <img className="w-75" src={thumbnail} alt={title} />
-              </div>
-              <div className="col col-6">
-                <p>Genre: {genre}</p>
-                <p>Platform: {platform}</p>
-                <p>Status: {status}</p>
-                <p>Launch date: {release_date}</p>
-                <p>Publisher: {publisher}</p>
-                <p>Developer: {developer}</p>
-              </div>
+              )}
             </div>
-            <div>
-              <h3 className="pt-4">Game description</h3>
-              <p className="pb-3 px-5">{description}</p>
-
-              {minimum_system_requirements && (
+            <div className="col col-6">
+              {loadedGameDetails && (
                 <>
-                  <h3>Minimum system requirements</h3>
-                  <ul className="d-flex flex-column gap-2 list-unstyled">
-                    <li>Graphics: {minimum_system_requirements.graphics}</li>
-                    <li>Memory: {minimum_system_requirements.memory}</li>
-                    <li>OS: {minimum_system_requirements.os}</li>
-                    <li>Processor: {minimum_system_requirements.processor}</li>
-                    <li>Storage: {minimum_system_requirements.storage}</li>
-                  </ul>
+                  <p>Genre: {genre}</p>
+                  <p>Platform: {platform}</p>
+                  <p>Status: {status}</p>
+                  <p>Launch date: {release_date}</p>
+                  <p>Publisher: {publisher}</p>
+                  <p>Developer: {developer}</p>
                 </>
               )}
-              <a className="text-decoration-none" href={game_url}>
-                Official page
-              </a>
             </div>
           </div>
-        )}
+          <div>
+            {loadedGameDetails && (
+              <>
+                <h3 className="pt-4">Game description</h3>
+                <p className="pb-3 px-5">{description}</p>
+                {minimum_system_requirements && (
+                  <>
+                    <h3>Minimum system requirements</h3>(
+                    <ul className="d-flex flex-column gap-2 list-unstyled">
+                      <li>Graphics: {minimum_system_requirements.graphics}</li>
+                      <li>Memory: {minimum_system_requirements.memory}</li>
+                      <li>OS: {minimum_system_requirements.os}</li>
+                      <li>
+                        Processor: {minimum_system_requirements.processor}
+                      </li>
+                      <li>Storage: {minimum_system_requirements.storage}</li>
+                    </ul>
+                    )
+                  </>
+                )}
+                <a className="text-decoration-none" href={game_url}>
+                  Official page
+                </a>
+              </>
+            )}
+          </div>
+        </div>
       </Layout>
     </>
   );
