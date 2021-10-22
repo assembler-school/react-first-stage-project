@@ -1,6 +1,7 @@
 import React, { createContext, useReducer } from "react";
 
 import { signUpUser, logInUser } from "../../utils/authentication";
+import buyCurrency from "../../utils/buyCurrency";
 import logOut from "../../utils/logOut";
 
 const actionTypes = {
@@ -43,21 +44,7 @@ function reducer(state, action) {
     case actionTypes.USER_SIGNUP: {
       let values = {
         ...action.payload,
-        cryptos: [
-          {
-            id: 1,
-            symbol: "BTC",
-            name: "Bitcoin",
-            amount: 0.5,
-            last_updated: "2021-10-22T08:22:02.000Z",
-            quote: {
-              USD: {
-                price: 31816.792351717424,
-                last_updated: "2021-10-22T08:22:02.000Z",
-              },
-            },
-          },
-        ],
+        cryptos: [],
         USD: 100000,
       };
 
@@ -107,43 +94,11 @@ function reducer(state, action) {
       };
     }
     case actionTypes.BUY_CURRENCY: {
-      const { crypto, cryptoAmount, USDSpent } = action.payload;
       const { user } = state;
-      const currentUSD = user.USD - USDSpent;
-      const cryptoRecord = user.cryptos.find((c) => {
-        c.id === crypto.id
-      return c}
-        );
-        console.log(cryptoRecord);
-      let newCryptos = () => {
-        if (cryptoRecord === -1) {
-        return [
-          ...user.cryptos,
-          { id: crypto.id, symbol: crypto.symbol, amount: cryptoAmount },
-        ];
-      } else {
-        return user.cryptos.map((c) => {
-          if (c.id === crypto.id) {
-            c.amount += cryptoAmount;
-          return c;
-        }
-        });
-      }
-      }
-    
       const local = JSON.parse(localStorage.getItem("Users"));
-      const updatedUsers = local.map((u) => {
-        if (u.username === user.username) {
-          u = {...user, cryptos: user.cryptos, USD: currentUSD}
-        return user;
-      }});
-      localStorage.Users = JSON.stringify(updatedUsers, null, 2)
+      const currentUser = local.find((e) => e.username === user.username);
+      const values = buyCurrency(action.payload, currentUser);
 
-      let values = {
-        ...user,
-        cryptos: newCryptos,
-        USD: currentUSD,
-      };
       return {
         ...state,
         user: values,
@@ -183,11 +138,8 @@ function CryptoWebProvider({ children }) {
         type: actionTypes.TYPING_INVESTMENT,
         payload: { newCryptoAmount: newCryptoAmount, USDSpent: USDSpent },
       }),
-<<<<<<< HEAD
-=======
     buyCurrency: (buyInfo) =>
       dispatch({ type: actionTypes.BUY_CURRENCY, payload: buyInfo }),
->>>>>>> 38f0369eed2cd38bf0757278feb1091392278836
   };
 
   return (

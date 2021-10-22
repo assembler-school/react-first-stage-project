@@ -14,7 +14,7 @@ export default function CryptoInfo(props) {
     <div className="table__info">
       <p>{crypto.name}</p>
       <p>{crypto.symbol}</p>
-      <p>{crypto.amount}</p>
+      <p>{parseFloat(crypto.amount).toFixed(5)}</p>
       <p>{parseFloat(crypto.quote.USD.price).toFixed(5)}</p>
       <div className="table-button">
         <ModuleBuy crypto={crypto} />

@@ -55,7 +55,10 @@ export default function BasicModal(props) {
             {crypto && `${crypto.name} - ${crypto.symbol}`}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {crypto && `Your current amount: ${crypto.amount}`}
+            {crypto &&
+              `Your current amount: ${
+                crypto.amount === undefined ? 0 : crypto.amount
+              }`}
             <div style={{ marginTop: "1rem" }}>
               <TextField
                 onChange={handleInvestment}

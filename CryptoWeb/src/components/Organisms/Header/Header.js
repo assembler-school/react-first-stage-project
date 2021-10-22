@@ -1,21 +1,25 @@
 import React, { useContext } from "react";
+
+import { Link } from "react-router-dom";
+
 import { CryptoWebContext } from "../../../context/CryptoWeb/reducer";
 import "./header.scss";
-
 
 function Header() {
   const { user, logOut } = useContext(CryptoWebContext);
 
-  function handleLogOut(){
-    logOut()
+  function handleLogOut() {
+    logOut();
   }
 
   return (
     <header>
       <div className="header__nav">
-        <div className="header__nav__item">
-          <i className="fas fa-bars"></i> Menu
-        </div>
+        <Link style={{ textDecoration: "none", color: "white" }} to="/home">
+          <div className="header__nav__item">
+            <i className="fas fa-bars"></i> Menu
+          </div>
+        </Link>
         <div className="header__nav__item">
           <i className="fas fa-search"></i> Search
         </div>

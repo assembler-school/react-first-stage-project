@@ -27,6 +27,12 @@ function Transactions() {
     <>
       {!isAuth && <Redirect to="/" />}
       <CustomDiv>
+        <div className="table__info__font">
+          <p>Crypto</p>
+          <p>Symbol</p>
+          <p>Price</p>
+          <p>$</p>
+        </div>
         {isLoading && (
           <div>
             <p>Loading cryptocurrencies...</p>
@@ -38,12 +44,6 @@ function Transactions() {
             <p>Sorry, we are having some problems now</p>
           </div>
         )}
-        <div className="table__info__font">
-          <p>Crypto</p>
-          <p>Symbol</p>
-          <p>Price</p>
-          <p>$</p>
-        </div>
         {cryptoList &&
           !hasError &&
           !isLoading &&
