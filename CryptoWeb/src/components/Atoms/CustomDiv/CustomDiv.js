@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const CustomDiv = styled.div`
-  margin: 10rem auto;
+  margin: 4rem auto;
   padding: 1rem;
   height: auto;
   width: 35rem;
