@@ -53,7 +53,7 @@ function Transactions() {
               <p>{crypto.symbol}</p>
               <p>{parseFloat(crypto.quote.USD.price).toFixed(5)}</p>
               <div className="table__button">
-                <button ><ModuleBuy/></button>
+                <ModuleBuy crypto={crypto} />
               </div>
             </div>
           ))}

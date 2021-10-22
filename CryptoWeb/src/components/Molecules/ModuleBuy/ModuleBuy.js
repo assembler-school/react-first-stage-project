@@ -42,10 +42,10 @@ export default function BasicModal(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            {`${crypto.name} - ${crypto.symbol}`}
+            {crypto && `${crypto.name} - ${crypto.symbol}`}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {`Your current amount: ${crypto.amount}`}
+            {crypto && `Your current amount: ${crypto.amount}`}
             <div style={{ marginTop: "1rem" }}>
               <TextField
                 onChange={handleInvestment}
@@ -57,7 +57,7 @@ export default function BasicModal(props) {
                 }}
               />
             </div>
-            <p>{`${crypto.name} amount: ${cryptoAmount}`}</p>
+            <p>{crypto && `${crypto.name} amount: ${cryptoAmount}`}</p>
             <RegularButton>Buy</RegularButton>
           </Typography>
         </Box>
