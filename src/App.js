@@ -7,9 +7,23 @@ import { useGames } from "./context/GamesContext";
 import Login from "./pages/Login";
 
 function App() {
-  const { loadAllGames, games } = useGames();
+  const { loadAllGames, games, fetchingGames } = useGames();
 
   useEffect(() => {
+    fetchAllGames();
+  }, []);
+
+  useEffect(() => {
+    saveLocalStorage(games);
+  }, [games]);
+
+  const saveLocalStorage = (games) => {
+    if (games.length > 0) {
+      localStorage.setItem("games", JSON.stringify(games));
+    }
+  };
+
+  const fetchAllGames = () => {
     const localStorageItem = JSON.parse(localStorage.getItem("games"));
     if (!localStorageItem) {
       var options = {
@@ -22,21 +36,14 @@ function App() {
             "23e233b049msh4485b68fa7318bdp11fd05jsn2ac4d49d92a1",
         },
       };
-
+      fetchingGames();
       axios.request(options).then(function (response) {
         loadAllGames(response.data);
       });
     } else {
       loadAllGames(localStorageItem);
     }
-  }, []);
-
-  useEffect(() => {
-    if (games.length > 0) {
-      localStorage.setItem("games", JSON.stringify(games));
-    }
-  }, [games]);
-
+  };
   return (
     <Router>
       <Switch>

@@ -10,7 +10,6 @@ export default function NavBar() {
   const { logOut } = useContext(AuthContext);
   const { gameId } = useParams();
   if (gameId) {
-    console.log(gameId);
   }
   return (
     <>

@@ -6,14 +6,28 @@ import { useGames } from "../context/GamesContext";
 import { AuthContext } from "../context/AuthContext";
 
 export default function GameDetails() {
-  const { gameDetails, loadedGame, loadGame, startFetch, endFetch, fetching } =
-    useGames();
+  const {
+    gameDetails,
+    loadedGameDetails,
+    fetchGameDetails,
+    loadGameDetails,
+    resetLoadedGameDetails,
+    fetchingGameDetails,
+  } = useGames();
 
   const { isLogged } = useContext(AuthContext);
 
   const { gameId } = useParams();
 
   useEffect(() => {
+    resetLoadedGameDetails();
+  }, []);
+
+  useEffect(() => {
+    fetchGame(gameId);
+  }, [gameId]);
+
+  const fetchGame = (gameId) => {
     var options = {
       method: "GET",
       url: `https://free-to-play-games-database.p.rapidapi.com/api/game`,
@@ -23,13 +37,11 @@ export default function GameDetails() {
         "x-rapidapi-key": "23e233b049msh4485b68fa7318bdp11fd05jsn2ac4d49d92a1",
       },
     };
-    startFetch();
+    fetchGameDetails();
     axios.request(options).then(function (response) {
-      loadGame(response.data);
-      endFetch();
+      loadGameDetails(response.data);
     });
-  }, [gameId]);
-
+  };
   const {
     title,
     thumbnail,
@@ -48,7 +60,7 @@ export default function GameDetails() {
       {!isLogged && <Redirect to="/" />}
       <Layout>
         {gameDetails === undefined && <div>ERROR</div>}
-        {!fetching && loadedGame && (
+        {loadedGameDetails && !fetchingGameDetails && (
           <div className="text-light border rounded-3 bg-dark bg-gradient py-3 mt-3">
             <h2 className="pb-3">{title}</h2>
             <div className="row">

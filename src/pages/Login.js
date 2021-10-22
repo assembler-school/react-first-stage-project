@@ -102,7 +102,6 @@ export default function Login() {
               }}
               validationSchema={ValidationSchema}
               onSubmit={(values, { resetForm }) => {
-                console.log(values);
                 values.id = uuid();
                 addUser([...users, values]);
                 resetForm();
