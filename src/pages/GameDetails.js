@@ -87,7 +87,7 @@ export default function GameDetails() {
                 <p className="pb-3 px-5">{description}</p>
                 {minimum_system_requirements && (
                   <>
-                    <h3>Minimum system requirements</h3>(
+                    <h3>Minimum system requirements</h3>
                     <ul className="d-flex flex-column gap-2 list-unstyled">
                       <li>Graphics: {minimum_system_requirements.graphics}</li>
                       <li>Memory: {minimum_system_requirements.memory}</li>
