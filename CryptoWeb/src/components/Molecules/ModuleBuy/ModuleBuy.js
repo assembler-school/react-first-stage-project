@@ -20,7 +20,7 @@ const style = {
 };
 
 export default function BasicModal(props) {
-  const { typingInvestment, cryptoAmount } = React.useContext(CryptoWebContext);
+  const { typingInvestment, cryptoAmount, USDSpent, buyCurrency } = React.useContext(CryptoWebContext);
   const { crypto } = props;
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -28,7 +28,12 @@ export default function BasicModal(props) {
 
   function handleInvestment(e) {
     let newCryptoAmount = e.target.value / crypto.quote.USD.price;
-    typingInvestment(newCryptoAmount);
+    typingInvestment(newCryptoAmount, e.target.value);
+  }
+
+  function handleBuy(){
+    const buyInfo ={crypto: crypto, cryptoAmount: cryptoAmount, USDSpent: USDSpent  }
+    buyCurrency(buyInfo)
   }
 
   return (
@@ -58,7 +63,7 @@ export default function BasicModal(props) {
               />
             </div>
             <p>{crypto && `${crypto.name} amount: ${cryptoAmount}`}</p>
-            <RegularButton>Buy</RegularButton>
+            <RegularButton onClick={handleBuy}>Buy</RegularButton>
           </Typography>
         </Box>
       </Modal>

@@ -11,7 +11,7 @@ const actionTypes = {
   CRYPTO_SUCCESS: "CRYPTO_SUCCESS",
   CRYPTO_ERROR: "CRYPTO_ERROR",
   FETCHING_PRICES: "FETCHING_PRICES",
-  NEW_TRANSACTION: "NEW_TRANSACTION",
+  BUY_CURRENCY: "BUY_CURRENCY",
   TYPING_INVESTMENT: "TYPING_INVESTMENT",
 };
 
@@ -106,19 +106,54 @@ function reducer(state, action) {
         cryptos: cryptoList,
       };
     }
-    // case actionTypes.NEW_TRANSACTION: {
-    //   const {user} = props;
-    //   const currentUSD = {user.USD - }
-    //   return {
-    //     ...state,
+    case actionTypes.BUY_CURRENCY: {
+      const { crypto, cryptoAmount, USDSpent } = action.payload;
+      const { user } = state;
+      const currentUSD = user.USD - USDSpent;
+      const cryptoRecord = user.cryptos.find((c) => {
+        c.id === crypto.id
+      return c}
+        );
+        console.log(cryptoRecord);
+      let newCryptos = () => {
+        if (cryptoRecord === -1) {
+        return [
+          ...user.cryptos,
+          { id: crypto.id, symbol: crypto.symbol, amount: cryptoAmount },
+        ];
+      } else {
+        return user.cryptos.map((c) => {
+          if (c.id === crypto.id) {
+            c.amount += cryptoAmount;
+          return c;
+        }
+        });
+      }
+      }
+    
+      const local = JSON.parse(localStorage.getItem("Users"));
+      const updatedUsers = local.map((u) => {
+        if (u.username === user.username) {
+          u = {...user, cryptos: user.cryptos, USD: currentUSD}
+        return user;
+      }});
+      localStorage.Users = JSON.stringify(updatedUsers, null, 2)
 
-    //     cryptoList: action.payload,
-    //   };
-    // }
+      let values = {
+        ...user,
+        cryptos: newCryptos,
+        USD: currentUSD,
+      };
+      return {
+        ...state,
+        user: values,
+      };
+    }
     case actionTypes.TYPING_INVESTMENT: {
       return {
         ...state,
-        cryptoAmount: action.payload,
+        cryptoAmount: action.payload.newCryptoAmount,
+        USDSpent: action.payload.USDSpent,
       };
     }
     default: {
@@ -143,8 +178,13 @@ function CryptoWebProvider({ children }) {
       dispatch({ type: actionTypes.CRYPTO_SUCCESS, payload: res }),
     fetchingPrices: (res) =>
       dispatch({ type: actionTypes.FETCHING_PRICES, payload: res }),
-    typingInvestment: (value) =>
-      dispatch({ type: actionTypes.TYPING_INVESTMENT, payload: value }),
+    typingInvestment: (newCryptoAmount, USDSpent) =>
+      dispatch({
+        type: actionTypes.TYPING_INVESTMENT,
+        payload: { newCryptoAmount: newCryptoAmount, USDSpent: USDSpent },
+      }),
+    buyCurrency: (buyInfo) =>
+      dispatch({ type: actionTypes.BUY_CURRENCY, payload: buyInfo }),
   };
 
   return (
