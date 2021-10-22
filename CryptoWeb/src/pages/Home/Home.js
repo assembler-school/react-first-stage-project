@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
 
 import FlexDiv from "../../components/Atoms/FlexDiv/FlexDiv";
-import RegularButton from "../../components/Atoms/RegularButton/RegularButton";
-import PhoneImg from "../../components/Molecules/PhoneImg/PhoneImg";
 import CryptoBoard from "../../components/Organisms/CryptoBoard/CryptoBoard";
 import InfoBoard from "../../components/Organisms/InfoBoard/InfoBoard";
 import { CryptoWebContext } from "../../context/CryptoWeb/reducer";
@@ -17,9 +15,7 @@ function Home() {
     <>
       {!isAuth && <Redirect to="/" />}
       {!currentUser && <Redirect to="/" />}
-      <h1>
-        {currentUser.username}, check your cryptowallet and take the next step
-      </h1>
+
       <FlexDiv>
         <CryptoBoard currentUser={currentUser} />
         <InfoBoard />

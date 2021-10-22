@@ -10,6 +10,7 @@ const actionTypes = {
   CRYPTO_FETCHING: "CRYPTO_FETCHING",
   CRYPTO_SUCCESS: "CRYPTO_SUCCESS",
   CRYPTO_ERROR: "CRYPTO_ERROR",
+  FETCHING_PRICES: "FETCHING_PRICES",
 };
 
 const CryptoWebContext = createContext();
@@ -23,7 +24,6 @@ const initialState = {
 };
 
 function reducer(state, action) {
-  const { user } = state;
   switch (action.type) {
     case actionTypes.USER_LOGIN: {
       const rightPassword = logInUser(action.payload);
@@ -40,7 +40,21 @@ function reducer(state, action) {
     case actionTypes.USER_SIGNUP: {
       let values = {
         ...action.payload,
-        cryptos: [],
+        cryptos: [
+          {
+            id: 1,
+            symbol: "BTC",
+            name: "Bitcoin",
+            amount: 0.5,
+            last_updated: "2021-10-22T08:22:02.000Z",
+            quote: {
+              USD: {
+                price: 31816.792351717424,
+                last_updated: "2021-10-22T08:22:02.000Z",
+              },
+            },
+          },
+        ],
         USD: 100000,
       };
 
@@ -80,6 +94,14 @@ function reducer(state, action) {
         cryptoList: action.payload,
       };
     }
+    case actionTypes.FETCHING_PRICES: {
+      return {
+        ...state,
+        isLoading: false,
+        hasError: false,
+        cryptos: action.payload,
+      };
+    }
     default: {
       return state;
     }
@@ -100,6 +122,8 @@ function CryptoWebProvider({ children }) {
       dispatch({ type: actionTypes.CRYPTO_ERROR, payload: err }),
     cryptoSuccess: (res) =>
       dispatch({ type: actionTypes.CRYPTO_SUCCESS, payload: res }),
+    fetchingPrices: (res) =>
+      dispatch({ type: actionTypes.FETCHING_PRICES, payload: res }),
   };
 
   return (
