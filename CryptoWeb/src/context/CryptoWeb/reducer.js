@@ -106,14 +106,15 @@ function reducer(state, action) {
         cryptos: cryptoList,
       };
     }
-    case actionTypes.NEW_TRANSACTION: {
-      return {
-        ...state,
-        isLoading: false,
-        hasError: false,
-        cryptoList: action.payload,
-      };
-    }
+    // case actionTypes.NEW_TRANSACTION: {
+    //   const {user} = props;
+    //   const currentUSD = {user.USD - }
+    //   return {
+    //     ...state,
+
+    //     cryptoList: action.payload,
+    //   };
+    // }
     case actionTypes.TYPING_INVESTMENT: {
       return {
         ...state,
