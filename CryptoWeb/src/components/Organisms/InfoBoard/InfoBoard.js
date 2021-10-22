@@ -14,7 +14,7 @@ export default function InfoBoard() {
         .reduce((a, b) => a + b);
     } else return 0;
   };
-  const totalInvestment = currentUser.USD + totalCrypto;
+  const totalInvestment = currentUser.USD + totalCrypto();
   const evolution = parseFloat(
     ((totalInvestment - 100000) * 100) / 100000
   ).toFixed(5);

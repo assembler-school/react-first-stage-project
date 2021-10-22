@@ -95,11 +95,12 @@ function reducer(state, action) {
       };
     }
     case actionTypes.FETCHING_PRICES: {
+      const cryptoList = action.payload.map((crypto) => crypto.data.data);
       return {
         ...state,
         isLoading: false,
         hasError: false,
-        cryptos: action.payload,
+        cryptos: cryptoList,
       };
     }
     default: {

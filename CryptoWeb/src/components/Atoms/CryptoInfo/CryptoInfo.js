@@ -1,5 +1,7 @@
 import React from "react";
 
+import ModuleBuy from "../../Molecules/ModuleBuy/ModuleBuy";
+
 import "../../Molecules/UserCryptos/UserCryptos.scss";
 
 export default function CryptoInfo(props) {
@@ -14,6 +16,7 @@ export default function CryptoInfo(props) {
       <p>{crypto.symbol}</p>
       <p>{crypto.amount}</p>
       <p>{parseFloat(crypto.quote.USD.price).toFixed(5)}</p>
+      <ModuleBuy />
     </div>
   );
 }

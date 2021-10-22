@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 import { CryptoWebContext } from "../../../context/CryptoWeb/reducer";
 import getCryptoPrices from "../../../utils/getCryptoPrices";
@@ -23,11 +22,9 @@ export default function UserCryptos() {
 
   useEffect(() => {
     cryptoFetching();
-    const cryptoPrices = async () => await getCryptoPrices(currentUser.cryptos);
-    console.log(cryptoPrices());
-    // cryptoPrices[0].status === 200
-    //   ? fetchingPrices(cryptoPrices)
-    //   : cryptoError(cryptoPrices);
+    getCryptoPrices(currentUser.cryptos).then((res) => {
+      res[0].status === 200 ? fetchingPrices(res) : cryptoError(res[0]);
+    });
   }, []);
   return (
     <>

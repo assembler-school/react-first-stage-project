@@ -1,9 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Redirect } from "react-router";
-import { Link } from "react-router-dom";
 
 import CustomDiv from "../../components/Atoms/CustomDiv";
-import CryptoTable from "../../components/Molecules/CryptoTable/CryptoTable";
 import { CryptoWebContext } from "../../context/CryptoWeb/reducer";
 import withLayout from "../../HOC/withLayout";
 import getCryptoList from "../../utils/getCryptoList";
@@ -54,7 +52,7 @@ function Transactions() {
               <p>{crypto.symbol}</p>
               <p>{parseFloat(crypto.quote.USD.price).toFixed(5)}</p>
               <div className="table__button">
-              <button className="btn__buy">Buy</button>
+                <button className="btn__buy">Buy</button>
               </div>
             </div>
           ))}

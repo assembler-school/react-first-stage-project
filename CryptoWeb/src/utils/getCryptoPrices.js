@@ -17,7 +17,6 @@ export default async function getCryptoPrices(array) {
         return res;
       })
     );
-
     return response;
   } catch (err) {
     return err;
