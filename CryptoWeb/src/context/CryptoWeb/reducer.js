@@ -11,7 +11,8 @@ const actionTypes = {
   CRYPTO_SUCCESS: "CRYPTO_SUCCESS",
   CRYPTO_ERROR: "CRYPTO_ERROR",
   FETCHING_PRICES: "FETCHING_PRICES",
-  NEW_TRANSACTION: "NEW_TRANSACTION"
+  NEW_TRANSACTION: "NEW_TRANSACTION",
+  TYPING_INVESTMENT: "TYPING_INVESTMENT",
 };
 
 const CryptoWebContext = createContext();
@@ -22,6 +23,7 @@ const initialState = {
   isLoading: false,
   hasError: false,
   errorMessage: null,
+  cryptoAmount: 0,
 };
 
 function reducer(state, action) {
@@ -112,6 +114,12 @@ function reducer(state, action) {
         cryptoList: action.payload,
       };
     }
+    case actionTypes.TYPING_INVESTMENT: {
+      return {
+        ...state,
+        cryptoAmount: action.payload,
+      };
+    }
     default: {
       return state;
     }
@@ -134,6 +142,8 @@ function CryptoWebProvider({ children }) {
       dispatch({ type: actionTypes.CRYPTO_SUCCESS, payload: res }),
     fetchingPrices: (res) =>
       dispatch({ type: actionTypes.FETCHING_PRICES, payload: res }),
+    typingInvestment: (value) =>
+      dispatch({ type: actionTypes.TYPING_INVESTMENT, payload: value }),
   };
 
   return (
