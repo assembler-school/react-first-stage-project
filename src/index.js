@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { GamesContextProvider } from "./context/GamesContext";
 import { AuthContextProvider } from "./context/AuthContext";
+import "./main.css";
 
 ReactDOM.render(
   <React.StrictMode>

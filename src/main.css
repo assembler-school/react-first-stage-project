@@ -1,0 +1,17 @@
+:root {
+  background-color: #212529;
+}
+header {
+  height: 20rem;
+  color: rgb(163, 159, 221);
+}
+.background-image {
+  background-image: url("https://media.istockphoto.com/photos/gamer-hands-picture-id1036204436?k=20&m=1036204436&s=612x612&w=0&h=4wO_VAje7U_PakkOB6UHz8g8lk5s6x0-6ICRPW_jzCA=");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.maxwidth {
+  max-width: 1200px;
+}

@@ -49,11 +49,11 @@ export default function GameDetails() {
       <Layout>
         {gameDetails === undefined && <div>ERROR</div>}
         {!fetching && loadedGame && (
-          <div className="text-light border rounded-3 bg-dark bg-gradient py-3">
-            <h2>{title}</h2>
+          <div className="text-light border rounded-3 bg-dark bg-gradient py-3 mt-3">
+            <h2 className="pb-3">{title}</h2>
             <div className="row">
               <div className="col col-6">
-                <img src={thumbnail} alt={title} />
+                <img className="w-75" src={thumbnail} alt={title} />
               </div>
               <div className="col col-6">
                 <p>Genre: {genre}</p>
@@ -66,7 +66,7 @@ export default function GameDetails() {
             </div>
             <div>
               <h3 className="pt-4">Game description</h3>
-              <p className="pb-3">{description}</p>
+              <p className="pb-3 px-5">{description}</p>
 
               {minimum_system_requirements && (
                 <>
