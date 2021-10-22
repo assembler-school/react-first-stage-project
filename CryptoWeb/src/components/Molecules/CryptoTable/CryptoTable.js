@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
+
 import { Link } from "react-router-dom";
-import { CryptoWebContext } from "../../../context/CryptoWeb/reducer";
+
 import CryptoInfo from "../../Atoms/CryptoInfo/CryptoInfo";
 import RegularButton from "../../Atoms/RegularButton/RegularButton";
-import "./CryptoTable.scss";
+import "../UserCryptos/UserCryptos.scss";
 
 export default function CryptoTable() {
   const { user } = useContext(CryptoWebContext);

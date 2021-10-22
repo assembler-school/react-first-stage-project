@@ -9,7 +9,6 @@ form {
     input {
         height: 3rem;
         width: 75%;
-        // box-shadow: 0px 0px 30px #971010;
         border-radius: 0.5rem;
         border: 1.5px solid #971010;
         margin: auto;
@@ -39,4 +38,11 @@ form {
             background-color: darken(rgb(216, 0, 0), 5%);
         }
     }
+}
+
+.intro-title{
+    font-size: 3.5rem;
+    text-align: left;
+    color: rgb(216, 0, 0);
+    width: 50%;
 }

@@ -1,7 +1,3 @@
-import React, { useContext } from "react";
-
-import { CryptoWebContext } from "../context/CryptoWeb/reducer";
-
 import { updateCurrentUser } from "./authentication";
 
 let local = JSON.parse(localStorage.getItem("Users"));

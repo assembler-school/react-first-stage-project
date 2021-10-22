@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { CryptoWebContext } from "../../../context/CryptoWeb/reducer";
-import "../../Molecules/CryptoTable/CryptoTable.scss";
+import React from "react";
+
+import "../../Molecules/UserCryptos/UserCryptos.scss";
 
 export default function CryptoInfo(props) {
   const local = JSON.parse(localStorage.getItem("Users"));
