@@ -34,4 +34,10 @@
   cursor: pointer;
   border-radius: 5px;
   text-align: center;
+  font-weight: bold;
+
+  &:hover{
+  transition: 0.5s;
+  background-color: rgb(51, 119, 51);
+  }
 }

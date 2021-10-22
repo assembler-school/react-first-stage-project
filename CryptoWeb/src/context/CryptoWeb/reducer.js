@@ -11,6 +11,7 @@ const actionTypes = {
   CRYPTO_SUCCESS: "CRYPTO_SUCCESS",
   CRYPTO_ERROR: "CRYPTO_ERROR",
   FETCHING_PRICES: "FETCHING_PRICES",
+  NEW_TRANSACTION: "NEW_TRANSACTION"
 };
 
 const CryptoWebContext = createContext();
@@ -100,6 +101,14 @@ function reducer(state, action) {
         isLoading: false,
         hasError: false,
         cryptos: action.payload,
+      };
+    }
+    case actionTypes.NEW_TRANSACTION: {
+      return {
+        ...state,
+        isLoading: false,
+        hasError: false,
+        cryptoList: action.payload,
       };
     }
     default: {
