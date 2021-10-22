@@ -11,7 +11,7 @@ const actionTypes = {
   CRYPTO_SUCCESS: "CRYPTO_SUCCESS",
   CRYPTO_ERROR: "CRYPTO_ERROR",
   FETCHING_PRICES: "FETCHING_PRICES",
-  NEW_TRANSACTION: "NEW_TRANSACTION",
+  BUY_CURRENCY: "BUY_CURRENCY",
   TYPING_INVESTMENT: "TYPING_INVESTMENT",
 };
 
@@ -106,12 +106,47 @@ function reducer(state, action) {
         cryptos: cryptoList,
       };
     }
-    case actionTypes.NEW_TRANSACTION: {
+    case actionTypes.BUY_CURRENCY: {
+      const { crypto, cryptoAmount, USDSpent } = action.payload;
+      const { user } = state;
+      const currentUSD = user.USD - USDSpent;
+      const cryptoRecord = user.cryptos.find((c) => {
+        c.id === crypto.id
+      return c}
+        );
+        console.log(cryptoRecord);
+      let newCryptos = () => {
+        if (cryptoRecord === -1) {
+        return [
+          ...user.cryptos,
+          { id: crypto.id, symbol: crypto.symbol, amount: cryptoAmount },
+        ];
+      } else {
+        return user.cryptos.map((c) => {
+          if (c.id === crypto.id) {
+            c.amount += cryptoAmount;
+          return c;
+        }
+        });
+      }
+      }
+    
+      const local = JSON.parse(localStorage.getItem("Users"));
+      const updatedUsers = local.map((u) => {
+        if (u.username === user.username) {
+          u = {...user, cryptos: user.cryptos, USD: currentUSD}
+        return user;
+      }});
+      localStorage.Users = JSON.stringify(updatedUsers, null, 2)
+
+      let values = {
+        ...user,
+        cryptos: newCryptos,
+        USD: currentUSD,
+      };
       return {
         ...state,
-        isLoading: false,
-        hasError: false,
-        cryptoList: action.payload,
+        user: values,
       };
     }
     case actionTypes.TYPING_INVESTMENT: {
@@ -148,6 +183,11 @@ function CryptoWebProvider({ children }) {
         type: actionTypes.TYPING_INVESTMENT,
         payload: { newCryptoAmount: newCryptoAmount, USDSpent: USDSpent },
       }),
+<<<<<<< HEAD
+=======
+    buyCurrency: (buyInfo) =>
+      dispatch({ type: actionTypes.BUY_CURRENCY, payload: buyInfo }),
+>>>>>>> 38f0369eed2cd38bf0757278feb1091392278836
   };
 
   return (
