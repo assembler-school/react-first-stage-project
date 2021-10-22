@@ -6,6 +6,7 @@ import { CryptoWebContext } from "../../context/CryptoWeb/reducer";
 import withLayout from "../../HOC/withLayout";
 import getCryptoList from "../../utils/getCryptoList";
 import RegularButton from "../../components/Atoms/RegularButton/RegularButton";
+import ModuleBuy from "../../components/Molecules/ModuleBuy";
 
 function Transactions() {
   const {
@@ -52,7 +53,7 @@ function Transactions() {
               <p>{crypto.symbol}</p>
               <p>{parseFloat(crypto.quote.USD.price).toFixed(5)}</p>
               <div className="table__button">
-                <button className="btn__buy">Buy</button>
+                <button ><ModuleBuy/></button>
               </div>
             </div>
           ))}
