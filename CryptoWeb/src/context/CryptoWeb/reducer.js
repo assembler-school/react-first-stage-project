@@ -117,7 +117,8 @@ function reducer(state, action) {
     case actionTypes.TYPING_INVESTMENT: {
       return {
         ...state,
-        cryptoAmount: action.payload,
+        cryptoAmount: action.payload.newCryptoAmount,
+        USDSpent: action.payload.USDSpent,
       };
     }
     default: {
@@ -142,8 +143,11 @@ function CryptoWebProvider({ children }) {
       dispatch({ type: actionTypes.CRYPTO_SUCCESS, payload: res }),
     fetchingPrices: (res) =>
       dispatch({ type: actionTypes.FETCHING_PRICES, payload: res }),
-    typingInvestment: (value) =>
-      dispatch({ type: actionTypes.TYPING_INVESTMENT, payload: value }),
+    typingInvestment: (newCryptoAmount, USDSpent) =>
+      dispatch({
+        type: actionTypes.TYPING_INVESTMENT,
+        payload: { newCryptoAmount: newCryptoAmount, USDSpent: USDSpent },
+      }),
   };
 
   return (

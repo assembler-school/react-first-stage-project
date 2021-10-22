@@ -20,7 +20,8 @@ const style = {
 };
 
 export default function BasicModal(props) {
-  const { typingInvestment, cryptoAmount } = React.useContext(CryptoWebContext);
+  const { typingInvestment, cryptoAmount, USDSpent } =
+    React.useContext(CryptoWebContext);
   const { crypto } = props;
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -28,7 +29,7 @@ export default function BasicModal(props) {
 
   function handleInvestment(e) {
     let newCryptoAmount = e.target.value / crypto.quote.USD.price;
-    typingInvestment(newCryptoAmount);
+    typingInvestment(newCryptoAmount, e.target.value);
   }
 
   return (
