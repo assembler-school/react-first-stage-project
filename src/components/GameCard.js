@@ -7,7 +7,6 @@ export default function GameCard({ title, thumbnail, id }) {
   if (games.length > 0) {
     var linkTitle = title.split(": ").join(":");
     linkTitle = linkTitle.split(" ").join("-");
-    console.log(linkTitle);
   }
   return (
     <div className="col-12 col-sm-6 col-md-4 ">
