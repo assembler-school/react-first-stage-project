@@ -7,13 +7,11 @@ import homeIcon from "../assets/icons/home-icon.svg";
 import logoutIcon from "../assets/icons/logout-icon.svg";
 
 export default function NavBar() {
-  const { logOut } = useContext(AuthContext);
-  const { gameId } = useParams();
-  if (gameId) {
-  }
+  const { logOut, isLogged } = useContext(AuthContext);
+
   return (
     <>
-      {gameId && (
+      {isLogged && (
         <Link to="/home" className="text-decoration-none text-light">
           <img className="img-responsive" src={homeIcon} alt="home" />
         </Link>

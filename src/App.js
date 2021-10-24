@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/game/:gameId">
+        <Route exact path="/game/:linkTitle">
           <GameDetails />
         </Route>
 

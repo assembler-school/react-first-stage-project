@@ -7,6 +7,7 @@ import { AuthContext } from "../context/AuthContext";
 
 export default function GameDetails() {
   const {
+    games,
     gameDetails,
     loadedGameDetails,
     fetchGameDetails,
@@ -16,7 +17,7 @@ export default function GameDetails() {
 
   const { isLogged } = useContext(AuthContext);
 
-  const { gameId } = useParams();
+  const { linkTitle } = useParams();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,14 +25,17 @@ export default function GameDetails() {
   }, []);
 
   useEffect(() => {
-    fetchGame(gameId);
-  }, [gameId]);
+    fetchGame(linkTitle);
+  }, [linkTitle]);
 
-  const fetchGame = (gameId) => {
+  const fetchGame = (linkTitle) => {
+    let gameTitle = linkTitle.split("-").join(" ");
+    gameTitle = gameTitle.split(":").join(": ");
+    const foundGame = games.find((game) => game.title === gameTitle);
     var options = {
       method: "GET",
       url: `https://free-to-play-games-database.p.rapidapi.com/api/game`,
-      params: { id: gameId },
+      params: { id: foundGame.id },
       headers: {
         "x-rapidapi-host": "free-to-play-games-database.p.rapidapi.com",
         "x-rapidapi-key": "23e233b049msh4485b68fa7318bdp11fd05jsn2ac4d49d92a1",
