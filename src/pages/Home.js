@@ -7,8 +7,7 @@ import { useGames } from "../context/GamesContext";
 
 export default function Home() {
   const { isLogged } = useContext(AuthContext);
-  const { resetLoadedGameDetails, gameDetails } = useGames();
-  console.log(gameDetails);
+  const { resetLoadedGameDetails } = useGames();
   useEffect(() => {
     resetLoadedGameDetails();
   }, []);

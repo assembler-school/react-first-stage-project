@@ -28,3 +28,8 @@ header img {
 .game-details {
   min-height: 40rem;
 }
+
+.loading-api-img {
+  width: 350px;
+  height: 198px;
+}
