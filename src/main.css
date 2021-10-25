@@ -1,0 +1,35 @@
+html {
+  background-color: #212529;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header {
+  height: 20rem;
+  color: rgb(163, 159, 221);
+}
+header img {
+  cursor: pointer;
+}
+.height100 {
+  min-height: 100vh;
+}
+.background-image {
+  background-image: url("./assets/img/header-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.maxwidth {
+  max-width: 1200px;
+}
+
+.game-details {
+  min-height: 40rem;
+}
+
+.loading-api-img {
+  width: 350px;
+  height: 198px;
+}
