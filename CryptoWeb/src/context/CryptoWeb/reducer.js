@@ -3,6 +3,7 @@ import React, { createContext, useReducer } from "react";
 import { signUpUser, logInUser } from "../../utils/authentication";
 import buyCurrency from "../../utils/buyCurrency";
 import logOut from "../../utils/logOut";
+import sellCurrency from "../../utils/sellCurrency";
 
 const actionTypes = {
   USER_LOGIN: "USER_LOGIN",
@@ -13,7 +14,9 @@ const actionTypes = {
   CRYPTO_ERROR: "CRYPTO_ERROR",
   FETCHING_PRICES: "FETCHING_PRICES",
   BUY_CURRENCY: "BUY_CURRENCY",
+  SELL_CURRENCY: "SELL_CURRENCY",
   TYPING_INVESTMENT: "TYPING_INVESTMENT",
+  TYPING_SALE: "TYPING_SALE",
 };
 
 const CryptoWebContext = createContext();
@@ -28,10 +31,12 @@ const initialState = {
 };
 
 function reducer(state, action) {
+  const { user } = state;
+  const local = JSON.parse(localStorage.getItem("Users"));
+
   switch (action.type) {
     case actionTypes.USER_LOGIN: {
       const rightPassword = logInUser(action.payload);
-      const local = JSON.parse(localStorage.getItem("Users"));
       const currentUser = local.find(
         (e) => e.username === action.payload.username
       );
@@ -94,11 +99,17 @@ function reducer(state, action) {
       };
     }
     case actionTypes.BUY_CURRENCY: {
-      const { user } = state;
-      const local = JSON.parse(localStorage.getItem("Users"));
       const currentUser = local.find((e) => e.username === user.username);
       const values = buyCurrency(action.payload, currentUser);
 
+      return {
+        ...state,
+        user: values,
+      };
+    }
+    case actionTypes.SELL_CURRENCY: {
+      const currentUser = local.find((e) => e.username === user.username);
+      const values = sellCurrency(action.payload, currentUser);
       return {
         ...state,
         user: values,
@@ -109,6 +120,13 @@ function reducer(state, action) {
         ...state,
         cryptoAmount: action.payload.newCryptoAmount,
         USDSpent: action.payload.USDSpent,
+      };
+    }
+    case actionTypes.TYPING_SALE: {
+      return {
+        ...state,
+        cryptoAmount: action.payload.newCryptoAmount,
+        newUSD: action.payload.newUSD,
       };
     }
     default: {
@@ -138,8 +156,15 @@ function CryptoWebProvider({ children }) {
         type: actionTypes.TYPING_INVESTMENT,
         payload: { newCryptoAmount: newCryptoAmount, USDSpent: USDSpent },
       }),
+    typingSale: (newCryptoAmount, newUSD) =>
+      dispatch({
+        type: actionTypes.TYPING_SALE,
+        payload: { newCryptoAmount: newCryptoAmount, newUSD: newUSD },
+      }),
     buyCurrency: (buyInfo) =>
       dispatch({ type: actionTypes.BUY_CURRENCY, payload: buyInfo }),
+    sellCurrency: (sellInfo) =>
+      dispatch({ type: actionTypes.SELL_CURRENCY, payload: sellInfo }),
   };
 
   return (
