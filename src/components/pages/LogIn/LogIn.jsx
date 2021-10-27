@@ -42,6 +42,7 @@ const LogIn = (props) => {
             <div className="container">
                 <div className="display-content">
                     <h1>Log In: </h1>
+                    <p>Username: test <span>Password: Test2021!</span></p>
                     <Formik
                         initialValues={initialValues}
                         validationSchema={validationSchema}

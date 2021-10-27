@@ -1,5 +1,5 @@
 export const configureFakeBackend = () => {
-    const users = [{ id: 1, username: "test", password: "test" }];
+    const users = [{ id: 1, username: "test", password: "Test2021!" }];
     let realFetch = window.fetch;
     window.fetch = (url, opts) => {
 
