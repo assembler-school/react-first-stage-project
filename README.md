@@ -1,54 +1,70 @@
-# Assembler School - React.js - First stage final project
+# Getting Started with Create React App
 
-In this project you will apply all the
-important concepts learn in the first part of the React series.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Getting Started
+## Available Scripts
 
-These instructions will get you a copy of the project up and running on your
-local machine for development and testing purposes.
+In the project directory, you can run:
 
-See deployment for notes on how to deploy the project on a live system.
+### `npm start`
 
-### The repository
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-First, you will need to `clone` or `fork` the repository into your Github
-account:
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-```
-$ git clone https://github.com/assembler-school/react-first-stage-project.git
-```
+### `npm test`
 
-## Project requirements
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-This is an overview of the main requirements of this project. The exact ones are
-found in the doc that the academic team will provide you.
+### `npm run build`
 
-- You must follow all the instructions of the project step-by-step
-- You should always try to solve them by yourself before asking for help
-- You should always help your team members and fellow students of the master so
-  that you can all learn together and become better software developers and team
-  members
-- You must finish all the steps that are marked as `Required`
-- You must use semantic HTML5 elements for all the markup of the application
-- Once you are done, you can move on to the optional ones that are marked as
-  `Extra 💯`
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Project delivery
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-In this project you will make use of all things covered up until now (Context api, hooks, data fetching, routing...).
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Project delivery
+### `npm run eject`
 
-To deliver this project you must follow the steps indicated in the document:
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-- [Submitting a solution](https://www.notion.so/Submitting-a-solution-524dab1a71dd4b96903f26385e24cdb6)
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Resources
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-- [reactjs.org](https://reactjs.org/)
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## License
+## Learn More
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
-for details
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
